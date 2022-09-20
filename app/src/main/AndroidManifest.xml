@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.bangiaytablet" >
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BanGiayTablet"
+        tools:targetApi="31" >
+        <activity
+            android:name=".Action.SuaSP_Action"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.HangTrongKho_Activity"
+            android:exported="false"
+            android:label="Hàng trong kho"
+            android:parentActivityName=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.QuenMK_Activity"
+            android:exported="false"
+            android:label="Quên mật khẩu"
+            android:parentActivityName=".Activity.DangNhap_Activity" />
+        <activity
+            android:name=".Activity.DangKy_Activity"
+            android:exported="false"
+            android:label="Đăng ký"
+            android:parentActivityName=".Activity.DangNhap_Activity" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:exported="false"
+            android:label="Quản lý bán giày"
+            android:parentActivityName=".Activity.DangNhap_Activity" />
+        <activity
+            android:name=".Activity.DangNhap_Activity"
+            android:exported="true"
+            android:label="Quản lý bán giày" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
