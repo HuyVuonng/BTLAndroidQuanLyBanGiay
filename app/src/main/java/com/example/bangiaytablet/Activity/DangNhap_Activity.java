@@ -71,6 +71,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                     for(int i =0; i< taiKhoanArrayList.size(); i++){
                         if(tenDN1.equals(taiKhoanArrayList.get(i).getUsername()) && mk1.equals(taiKhoanArrayList.get(i).getPassword())){
                             Intent intent = new Intent(DangNhap_Activity.this,MainActivity.class);
+                            intent.putExtra("TenChuTaiKhoan", taiKhoanArrayList.get(i).getName());
                             startActivity(intent);
                             trangthaitaikhoan=true;
                             break;
@@ -107,7 +108,8 @@ public class DangNhap_Activity extends AppCompatActivity {
             int id= dataTaiKhoan.getInt(0);
             String TenDN = dataTaiKhoan.getString(1);
             String MatKhau = dataTaiKhoan.getString(2);
-            taiKhoanArrayList.add(new TaiKhoan(id,TenDN,MatKhau));
+            String hoTen= dataTaiKhoan.getString(3);
+            taiKhoanArrayList.add(new TaiKhoan(id,TenDN,MatKhau,hoTen));
         }
     }
 

@@ -24,6 +24,13 @@ public class HoaDonNhap {
         this.tongtien = tongtien;
     }
 
+    public HoaDonNhap(String ngayTaoHoaDon, String nguoiNhap, String ncc, int maHoaDon) {
+        this.ngayTaoHoaDon = ngayTaoHoaDon;
+        this.nguoiNhap = nguoiNhap;
+        this.ncc = ncc;
+        MaHoaDon = maHoaDon;
+    }
+
     public String getNguoiNhap() {
         return nguoiNhap;
     }

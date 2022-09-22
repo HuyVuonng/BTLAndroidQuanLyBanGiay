@@ -1,77 +1,80 @@
 package com.example.bangiaytablet.Class;
 
 public class ChitietHoaDonNhap {
-    int MaHoaDon,soLuong;
-    String MaHang,TenHang,NgayNhap;
-    float giaNhap;
+    int MaHoaDonNhap,soLuongNhap,SizeNhap;
+    String MaHangNhap,tenhangNhap,MauSac;
+    Double giaNhap;
 
-    public ChitietHoaDonNhap(int maHoaDon, int soLuong, String maHang, String tenHang, String ngayNhap) {
-        MaHoaDon = maHoaDon;
-        this.soLuong = soLuong;
-        MaHang = maHang;
-        TenHang = tenHang;
-        NgayNhap = ngayNhap;
-    }
-
-    public ChitietHoaDonNhap(int maHoaDon, int soLuong, String maHang, String tenHang, String ngayNhap, float giaNhap) {
-        MaHoaDon = maHoaDon;
-        this.soLuong = soLuong;
-        MaHang = maHang;
-        TenHang = tenHang;
-        NgayNhap = ngayNhap;
+    public ChitietHoaDonNhap(int maHoaDonNhap, int soLuongNhap, int sizeNhap, String maHangNhap, Double giaNhap) {
+        MaHoaDonNhap = maHoaDonNhap;
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
         this.giaNhap = giaNhap;
     }
 
-    public ChitietHoaDonNhap(int maHoaDon, float giaNhap) {
-        MaHoaDon = maHoaDon;
+    public ChitietHoaDonNhap(int soLuongNhap, int sizeNhap, String maHangNhap, String tenhangNhap, String mauSac, Double giaNhap) {
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
+        this.tenhangNhap = tenhangNhap;
+        MauSac = mauSac;
         this.giaNhap = giaNhap;
     }
 
-    public float getGiaNhap() {
+    public String getTenhangNhap() {
+        return tenhangNhap;
+    }
+
+    public void setTenhangNhap(String tenhangNhap) {
+        this.tenhangNhap = tenhangNhap;
+    }
+
+    public String getMauSac() {
+        return MauSac;
+    }
+
+    public void setMauSac(String mauSac) {
+        MauSac = mauSac;
+    }
+
+    public int getMaHoaDonNhap() {
+        return MaHoaDonNhap;
+    }
+
+    public void setMaHoaDonNhap(int maHoaDonNhap) {
+        MaHoaDonNhap = maHoaDonNhap;
+    }
+
+    public int getSoLuongNhap() {
+        return soLuongNhap;
+    }
+
+    public void setSoLuongNhap(int soLuongNhap) {
+        this.soLuongNhap = soLuongNhap;
+    }
+
+    public int getSizeNhap() {
+        return SizeNhap;
+    }
+
+    public void setSizeNhap(int sizeNhap) {
+        SizeNhap = sizeNhap;
+    }
+
+    public String getMaHangNhap() {
+        return MaHangNhap;
+    }
+
+    public void setMaHangNhap(String maHangNhap) {
+        MaHangNhap = maHangNhap;
+    }
+
+    public Double getGiaNhap() {
         return giaNhap;
     }
 
-    public void setGiaNhap(float giaNhap) {
+    public void setGiaNhap(Double giaNhap) {
         this.giaNhap = giaNhap;
-    }
-
-    public String getNgayNhap() {
-        return NgayNhap;
-    }
-
-    public void setNgayNhap(String ngayNhap) {
-        NgayNhap = ngayNhap;
-    }
-
-    public int getMaHoaDon() {
-        return MaHoaDon;
-    }
-
-    public void setMaHoaDon(int maHoaDon) {
-        MaHoaDon = maHoaDon;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public String getMaHang() {
-        return MaHang;
-    }
-
-    public void setMaHang(String maHang) {
-        MaHang = maHang;
-    }
-
-    public String getTenHang() {
-        return TenHang;
-    }
-
-    public void setTenHang(String tenHang) {
-        TenHang = tenHang;
     }
 }

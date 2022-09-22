@@ -11,90 +11,89 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/imageViewAnhSP"
+            android:id="@+id/imageViewAnhSPNhap"
             android:layout_width="150dp"
             android:layout_height="130dp"
-            app:srcCompat="@android:drawable/ic_menu_gallery" />
+            app:srcCompat="@android:drawable/ic_menu_gallery"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="11dp"
-            android:layout_toRightOf="@+id/imageViewAnhSP"
+            android:layout_toRightOf="@+id/imageViewAnhSPNhap"
             android:layout_centerVertical="true">
 
             <TextView
-                android:id="@+id/tensptrongkhonsptrongkho"
+                android:id="@+id/tenspDangNhap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Tên sảm phẩm"
                 android:textAllCaps="true"
                 android:textSize="35dp" />
-
             <TextView
-                android:id="@+id/masptrongkho"
+                android:layout_below="@+id/tenspDangNhap"
+                android:id="@+id/maspDangNhap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tensptrongkhonsptrongkho"
                 android:layout_marginLeft="10dp"
                 android:text="Mã sảm phẩm"
                 android:textAllCaps="true"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/soluongsptrongkho"
+                android:id="@+id/soluongspDangNhap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tensptrongkhonsptrongkho"
+                android:layout_below="@+id/tenspDangNhap"
+                android:layout_toRightOf="@+id/maspDangNhap"
                 android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/masptrongkho"
                 android:text="SL:"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/giasptrongkho"
+                android:id="@+id/mausacspDangnhap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tensptrongkhonsptrongkho"
+                android:layout_below="@+id/tenspDangNhap"
                 android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/soluongsptrongkho"
-                android:text="Giá:"
-                android:textAllCaps="true"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/mausacsptrongkho"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tensptrongkhonsptrongkho"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/giasptrongkho"
+                android:layout_toRightOf="@+id/soluongspDangNhap"
                 android:text="Màu sắc:"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 
-            <ImageView
-                android:id="@+id/btnedit"
-                android:layout_width="88dp"
-                android:layout_height="77dp"
-                android:layout_marginRight="3dp"
-                android:layout_toLeftOf="@+id/btndelete"
-                android:padding="15dp"
-                android:src="@drawable/ic_action_edit"
+            <TextView
+                android:id="@+id/sizespDangnhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tenspDangNhap"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/mausacspDangnhap"
+                android:text="Size:"
+                android:textAllCaps="true"
+                android:textSize="20dp" />
 
-                />
+            <TextView
+                android:id="@+id/GiaspDangnhap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tenspDangNhap"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/sizespDangnhap"
+                android:text="Giá nhập:"
+                android:textAllCaps="true"
+                android:textSize="20dp" />
 
             <ImageView
-                android:id="@+id/btndelete"
-                android:layout_width="89dp"
-                android:layout_height="78dp"
+                android:id="@+id/btnXoaSPtrongDSDANgNhap"
+                android:layout_width="82dp"
+                android:layout_height="57dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="3dp"
-                android:padding="15dp"
                 android:src="@drawable/ic_action_delete" />
+
         </RelativeLayout>
+
 
 
     </RelativeLayout>
