@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
        database.QuerryData("CREATE TABLE IF NOT EXISTS HoaDonNhap (maHD INTEGER PRIMARY KEY AUTOINCREMENT,NgayTao VARCHAR(50),NguoiNhap VARCHAR(50),NhaCungCap VARCHAR(50))");
 //        database.QuerryData("CREATE TABLE IF NOT EXISTS HoaDonXuat (maHD INTEGER PRIMARY KEY AUTOINCREMENT,NgayTao VARCHAR(50))");
         database.QuerryData("CREATE TABLE IF NOT EXISTS Hang (MAHANG varchar(50) PRIMARY KEY, TENlOAIGIAY VARCHAR(200),TongSl INTEGER,Gia Double,HangSX VARCHAR(200),MauSac varchar(50),Size41 INTEGER,Size42 INTEGER,Size43 INTEGER)");
-//        database.QuerryData("CREATE TABLE IF NOT EXISTS ChiTietHoaDonNhap (maHD INTEGER ,NgayTao VARCHAR(50),maHang VARCHAR(50),tenHang VARCHAR(50),Sl INTEGER,GiaNhap Float),NguoiNhap VARCHAR(50),NhaCungCap VARCHAR(50)");
+        database.QuerryData("CREATE TABLE IF NOT EXISTS ChiTietHoaDonNhap (maHDNhap INTEGER ,maHangNhap VARCHAR(50),SlNhap INTEGER,GiaNhap Double,Size INTEGER)");
 //        database.QuerryData("CREATE TABLE IF NOT EXISTS ChiTietHoaDonXuat (maHD INTEGER ,NgayTao VARCHAR(50),maHang VARCHAR(50),tenHang VARCHAR(50),Sl INTEGER,GiaXuat Float)");
 
         hangtrongkho.setOnClickListener(new View.OnClickListener() {

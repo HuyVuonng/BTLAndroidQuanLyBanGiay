@@ -30,6 +30,7 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
     ArrayList<ChitietHoaDonNhap> arrayListChitietHoaDonNhapl;
     TextView maHDNhap,nguoiNhap,NhaCC,ngaytaoHD,tongtiencuahpadon;
     ImageView imgvThemSp;
+    Double tongtienhientai=0.0;
     Intent intent;
     ListView lv;
     @Override
@@ -53,7 +54,10 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
         NhaCC.setText("Nhà cung cấp: "+arrayList.get(doDaiArray-1).getNcc());
         ngaytaoHD.setText("Ngày nhập: "+arrayList.get(doDaiArray-1).getNgayTaoHoaDon());
 
-
+        for(int i=0;i<arrayListChitietHoaDonNhapl.size();i++){
+            tongtienhientai+=arrayListChitietHoaDonNhapl.get(i).getGiaNhap()*arrayListChitietHoaDonNhapl.get(i).getSoLuongNhap();
+        }
+        tongtiencuahpadon.setText("Tổng tiền: "+tongtienhientai);
         imgvThemSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

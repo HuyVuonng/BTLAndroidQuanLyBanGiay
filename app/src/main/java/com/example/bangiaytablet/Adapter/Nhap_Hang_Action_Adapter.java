@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bangiaytablet.Action.Nhap_Hang_Action;
+import com.example.bangiaytablet.Action.Them_SP_Da_Co_Action;
 import com.example.bangiaytablet.Class.Hang;
 import com.example.bangiaytablet.R;
 
@@ -80,21 +81,26 @@ public class Nhap_Hang_Action_Adapter extends BaseAdapter {
 
 
 
-//        viewHolder.imgNhap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                intent=new Intent(context, Them_SP_Activity.class);
-//                String tenSpThem= Sp.getTenHang();
-//                String maSpThem= Sp.getMaHang();
-//                int SLSp= Sp.getSoLuong();
-//                String SlSpThem=Integer.toString(SLSp);
-//                intent.putExtra("maSpThem",maSpThem);
-//                intent.putExtra("tenSpThem",tenSpThem);
-//                intent.putExtra("SLSPThem",SlSpThem);
-//                context.startActivity(intent);
-//                Toast.makeText(context,"themsp",Toast.LENGTH_LONG).show();
-//            }
-//        });
+        viewHolder.imgNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent=new Intent(context, Them_SP_Da_Co_Action.class);
+                String tenSpThem= Sp.getTenHang();
+                String maSpThem= Sp.getMaHang();
+                int SLSp= Sp.getSoLuong();
+                String SlSpThem=Integer.toString(SLSp);
+                intent.putExtra("maSpThem",maSpThem);
+                intent.putExtra("tenSpThem",tenSpThem);
+                intent.putExtra("tenthuonghieu",Sp.getNhaSanXuat());
+                intent.putExtra("MauSac",Sp.getMausac());
+                intent.putExtra("Size41",Integer.toString(Sp.getSize41()));
+                intent.putExtra("Size42",Integer.toString(Sp.getSize42()));
+                intent.putExtra("Size43",Integer.toString(Sp.getSize43()));
+                intent.putExtra("tongSL",Integer.toString(Sp.getSoLuong()));
+                context.startActivity(intent);
+
+            }
+        });
         return view;
     }
 }
