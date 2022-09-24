@@ -1,6 +1,9 @@
 package com.example.bangiaytablet.Action;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.bangiaytablet.Class.ChitietHoaDonNhap;
 import com.example.bangiaytablet.Class.Hang;
@@ -8,16 +11,25 @@ import com.example.bangiaytablet.Class.HoaDonNhap;
 import com.example.bangiaytablet.Database.DatabaseQuanLy;
 import com.example.bangiaytablet.R;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Them_SP_Moi_Action extends AppCompatActivity {
@@ -28,9 +40,15 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
     int slCu,slTong;
     String tensp,masp,slsp;
     Button btnThem,btnHuy;
+    ImageView moCamera,moFolder,imghinhsp;
     ArrayList<Hang> arrayList;
     ArrayList<HoaDonNhap> arrayListHoaDonNhap;
     ArrayList<ChitietHoaDonNhap> arrayListChiTietHoaDonNhap;
+    final int REQUEST_CODE_CAMERA=123;
+    final int REQUEST_CODE_FOLDER=456;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,26 +65,43 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
         database.QuerryData("CREATE TABLE IF NOT EXISTS ChiTietHoaDonNhap (maHDNhap INTEGER ,maHangNhap VARCHAR(50),SlNhap INTEGER,GiaNhap Double,Size INTEGER)");
 
 
-        maSPThem=findViewById(R.id.editTextMaSanPhamThemMoi);
-        tenSPThem=findViewById(R.id.editTextTenSanPhamThemMoi);
-        GiaSpThem=findViewById(R.id.editTextGiaSanPhamThemMoi);
-        btnThem=findViewById(R.id.btnThemSPMoiVaoKho);
-        btnHuy=findViewById(R.id.btnHuyThemSPMoi);
-        slSize41=findViewById(R.id.edtsls41Nhap);
-        slSize42=findViewById(R.id.edtsls42Nhap);
-        slSize43=findViewById(R.id.edtsls43Nhap);
-        ThuongHieu=findViewById(R.id.editTextHangSanPhamThemMoi);
-        mausac=findViewById(R.id.editTextMauSanPhamThemMoi);
-
-
+        anhxa();
         getdata();
         getdataHoaDonNhap();
+
+        moCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityCompat.requestPermissions(
+                        Them_SP_Moi_Action.this,
+                        new String[]{Manifest.permission.CAMERA},
+                        REQUEST_CODE_CAMERA
+                );
+            }
+        });
+
+        moFolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityCompat.requestPermissions(
+                        Them_SP_Moi_Action.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_CODE_FOLDER
+                );
+            }
+        });
+
+
+
+
+
 
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent =new Intent(Them_SP_Moi_Action.this,Nhap_Hang_Action.class);
                 startActivity(intent);
+
             }
         });
 
@@ -131,6 +166,8 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
                         } else {
                             int maHD = arrayListHoaDonNhap.get(arrayListHoaDonNhap.size() - 1).getMaHoaDon();
 
+                            //chuyển từ dataImageView ->byte[];
+
 
                             database.QuerryData("INSERT INTO Hang VALUES('" + maHangThem + "','" + tenHangThem + "','" + slhangThemINT + "','" + giaban + "','" + thuonghieusp + "','" + mauSac + "','" + size41nhap + "','" + size42nhap + "','" + size43nhap + "')");
                             if (size41nhap > 0) {
@@ -159,6 +196,70 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode){
+            case REQUEST_CODE_CAMERA:
+                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent,REQUEST_CODE_CAMERA);
+                }
+                else {
+                    Toast.makeText(Them_SP_Moi_Action.this,"Bạn không cấp quyền cho mở Camera",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case REQUEST_CODE_FOLDER:
+                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    Intent intent=new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent,REQUEST_CODE_FOLDER);
+                }
+                else {
+                    Toast.makeText(Them_SP_Moi_Action.this,"Bạn không cấp quyền cho mở Folder",Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode==REQUEST_CODE_CAMERA && resultCode==RESULT_OK && data!=null){
+            Bitmap bitmap= (Bitmap) data.getExtras().get("data");
+            imghinhsp.setImageBitmap(bitmap);
+        }
+        if(requestCode==REQUEST_CODE_FOLDER && resultCode==RESULT_OK && data!=null){
+            Uri uri= data.getData();
+            try {
+                InputStream inputStream= getContentResolver().openInputStream(uri);
+                Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
+                imghinhsp.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void anhxa() {
+        maSPThem=findViewById(R.id.editTextMaSanPhamThemMoi);
+        tenSPThem=findViewById(R.id.editTextTenSanPhamThemMoi);
+        GiaSpThem=findViewById(R.id.editTextGiaSanPhamThemMoi);
+        btnThem=findViewById(R.id.btnThemSPMoiVaoKho);
+        btnHuy=findViewById(R.id.btnHuyThemSPMoi);
+        slSize41=findViewById(R.id.edtsls41Nhap);
+        slSize42=findViewById(R.id.edtsls42Nhap);
+        slSize43=findViewById(R.id.edtsls43Nhap);
+        ThuongHieu=findViewById(R.id.editTextHangSanPhamThemMoi);
+        mausac=findViewById(R.id.editTextMauSanPhamThemMoi);
+        moCamera=findViewById(R.id.btnThemanhMoiCamera);
+        moFolder=findViewById(R.id.btnThemanhMoiFolder);
+        imghinhsp=findViewById(R.id.imgSpThemMoi);
+    }
+
     private void getdata() {
         Cursor dataHang = database.GetData("SELECT * FROM Hang ");
         arrayList.clear();
@@ -185,4 +286,6 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
             arrayListHoaDonNhap.add(new HoaDonNhap(ngayNhap,maHD));
         }
     }
+
+
 }

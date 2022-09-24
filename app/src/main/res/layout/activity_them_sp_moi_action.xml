@@ -188,12 +188,24 @@
                 android:id="@+id/btnHuyThemSPMoi"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnThemanhMoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <ImageView
+            android:id="@+id/btnThemanhMoiCamera"
+            android:layout_width="63dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/imgSpThemMoi"
-            android:text="Thêm ảnh"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <ImageView
+            android:id="@+id/btnThemanhMoiFolder"
+            android:layout_width="63dp"
+            android:layout_height="58dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/imgSpThemMoi"
+            android:textSize="20sp"
+            android:layout_below="@+id/btnThemanhMoiCamera"
+            app:srcCompat="@android:drawable/sym_contact_card" />
     </RelativeLayout>
 </LinearLayout>
