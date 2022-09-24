@@ -3,6 +3,8 @@ package com.example.bangiaytablet.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +50,7 @@ public class Nhap_Hang_Action_Adapter extends BaseAdapter {
 
     private class ViewHolderNhap{
         TextView tvTenSPNhap,tvMaSPNhap,tvSL,mausac;
-        ImageView imgNhap;
+        ImageView imgNhap,imgANhSP;
     }
 
     @Override
@@ -65,6 +67,7 @@ public class Nhap_Hang_Action_Adapter extends BaseAdapter {
             viewHolder.tvSL=view.findViewById(R.id.soluongsptrongkhoNhap);
             viewHolder.imgNhap=view.findViewById(R.id.btnNhapThemSP);
             viewHolder.mausac=view.findViewById(R.id.mausacspnhap);
+            viewHolder.imgANhSP=view.findViewById(R.id.imageViewAnhSPNhap);
             view.setTag(viewHolder);
 
 
@@ -78,6 +81,10 @@ public class Nhap_Hang_Action_Adapter extends BaseAdapter {
         viewHolder.tvMaSPNhap.setText("Mã SP: "+Sp.getMaHang());
         viewHolder.tvSL.setText("SL: "+SL);
         viewHolder.mausac.setText("Màu: "+Sp.getMausac());
+        //chuyển byte[]->bitmap
+        byte[] hinhAnh= Sp.getHinhanh();
+        Bitmap bitmap= BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
+        viewHolder.imgANhSP.setImageBitmap(bitmap);
 
 
 

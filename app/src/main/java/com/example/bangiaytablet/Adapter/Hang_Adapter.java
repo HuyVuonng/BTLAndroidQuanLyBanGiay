@@ -2,6 +2,8 @@ package com.example.bangiaytablet.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,7 @@ public class Hang_Adapter extends BaseAdapter
 
     private class ViewHolder{
         TextView tvTenSP,tvMagiay,tvSL,tvgia,tvMauSac;
-        ImageView imgSua,imgXoa;
+        ImageView imgSua,imgXoa,hinhanhSP;
     }
 
     @Override
@@ -70,6 +72,7 @@ public class Hang_Adapter extends BaseAdapter
             viewHolder.imgXoa=view.findViewById(R.id.btndelete);
             viewHolder.tvgia=view.findViewById(R.id.giasptrongkho);
             viewHolder.tvMauSac=view.findViewById(R.id.mausacsptrongkho);
+            viewHolder.hinhanhSP=view.findViewById(R.id.imageViewAnhSP);
 
             view.setTag(viewHolder);
 
@@ -85,6 +88,11 @@ public class Hang_Adapter extends BaseAdapter
         viewHolder.tvSL.setText("SL: "+SL);
         viewHolder.tvgia.setText("Giá: "+giaSp);
         viewHolder.tvMauSac.setText("Màu sắc: "+Sp.getMausac());
+
+        //chuyển byte[]->bitmap
+        byte[] hinhAnh= Sp.getHinhanh();
+        Bitmap bitmap= BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
+        viewHolder.hinhanhSP.setImageBitmap(bitmap);
 
 
         viewHolder.imgSua.setOnClickListener(new View.OnClickListener() {

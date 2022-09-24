@@ -14,7 +14,7 @@
             android:id="@+id/imageViewAnhSPNhap"
             android:layout_width="150dp"
             android:layout_height="130dp"
-            app:srcCompat="@android:drawable/ic_menu_gallery"/>
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <RelativeLayout
             android:layout_width="match_parent"

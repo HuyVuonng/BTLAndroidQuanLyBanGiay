@@ -4,6 +4,7 @@ public class ChitietHoaDonNhap {
     int MaHoaDonNhap,soLuongNhap,SizeNhap;
     String MaHangNhap,tenhangNhap,MauSac;
     Double giaNhap;
+    byte[] anhsp;
 
     public ChitietHoaDonNhap(int maHoaDonNhap, int soLuongNhap, int sizeNhap, String maHangNhap, Double giaNhap) {
         MaHoaDonNhap = maHoaDonNhap;
@@ -20,6 +21,35 @@ public class ChitietHoaDonNhap {
         this.tenhangNhap = tenhangNhap;
         MauSac = mauSac;
         this.giaNhap = giaNhap;
+    }
+
+    public ChitietHoaDonNhap(int maHoaDonNhap, int soLuongNhap, int sizeNhap, String maHangNhap, String tenhangNhap, String mauSac, Double giaNhap, byte[] anhsp) {
+        MaHoaDonNhap = maHoaDonNhap;
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
+        this.tenhangNhap = tenhangNhap;
+        MauSac = mauSac;
+        this.giaNhap = giaNhap;
+        this.anhsp = anhsp;
+    }
+
+    public ChitietHoaDonNhap(int soLuongNhap, int sizeNhap, String maHangNhap, String tenhangNhap, String mauSac, Double giaNhap, byte[] anhsp) {
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
+        this.tenhangNhap = tenhangNhap;
+        MauSac = mauSac;
+        this.giaNhap = giaNhap;
+        this.anhsp = anhsp;
+    }
+
+    public byte[] getAnhsp() {
+        return anhsp;
+    }
+
+    public void setAnhsp(byte[] anhsp) {
+        this.anhsp = anhsp;
     }
 
     public String getTenhangNhap() {

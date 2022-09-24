@@ -10,11 +10,14 @@ import com.example.bangiaytablet.R;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
     DatabaseQuanLy database;
     EditText SlSpThem,GiaSpThem,slSize41,slSize42,slSize43;
     TextView maSPThem,tenSPThem,mausac,ThuongHieu;
+    ImageView anhSP;
     int slCu,slTong;
     String tensp,masp,slsp;
     String tenspnhan,maspnhan,thuonghieunhan,maunhan,size41nhan,size42nhan,size43nhan,tongSLnhan;
@@ -66,6 +70,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
         slSize43=findViewById(R.id.edtsls43Nhap);
         ThuongHieu=findViewById(R.id.TextHangSanPhamThem);
         mausac=findViewById(R.id.TextMauSanPhamThem);
+        anhSP=findViewById(R.id.imgSpThem);
 
 
         getdata();
@@ -75,6 +80,17 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
         tenSPThem.setText("Tên sản phẩm: "+tenspnhan);
         ThuongHieu.setText("Thương hiệu: "+thuonghieunhan);
         mausac.setText("Màu sắc: "+maunhan);
+
+
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            if(arrayList.get(i).getMaHang().equalsIgnoreCase(maspnhan)){
+                byte[] hinhAnh = arrayList.get(i).getHinhanh();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+                anhSP.setImageBitmap(bitmap);
+                break;
+            }
+        }
 
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,7 +202,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
             int SLSize42=dataHang.getInt(7);
             int SLSize43=dataHang.getInt(8);
             Double Gia=dataHang.getDouble(3);
-            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia));
+            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia,dataHang.getBlob(9)));
         }
     }
 

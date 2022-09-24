@@ -202,10 +202,10 @@
             android:id="@+id/btnThemanhMoiFolder"
             android:layout_width="63dp"
             android:layout_height="58dp"
+            android:layout_below="@+id/btnThemanhMoiCamera"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/imgSpThemMoi"
             android:textSize="20sp"
-            android:layout_below="@+id/btnThemanhMoiCamera"
             app:srcCompat="@android:drawable/sym_contact_card" />
     </RelativeLayout>
 </LinearLayout>

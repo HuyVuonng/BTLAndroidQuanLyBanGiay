@@ -2,14 +2,18 @@ package com.example.bangiaytablet.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bangiaytablet.Action.Nhap_Hang_Action;
 import com.example.bangiaytablet.Adapter.Hang_Adapter;
@@ -28,6 +32,7 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
     ArrayList<HoaDonNhap> arrayList;
     Nhap_Hang_Activity_Adapter adapter;
     ArrayList<ChitietHoaDonNhap> arrayListChitietHoaDonNhapl;
+    ArrayList<Hang> arrayListHang;
     TextView maHDNhap,nguoiNhap,NhaCC,ngaytaoHD,tongtiencuahpadon;
     ImageView imgvThemSp;
     Double tongtienhientai=0.0;
@@ -44,6 +49,7 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
         database= new DatabaseQuanLy(this, "QuanLyBanGiayDn.sqlite",null,1);
         adapter = new Nhap_Hang_Activity_Adapter(this,R.layout.dong_cac_san_pham_dang_nhap_trong_hoa_don,arrayListChitietHoaDonNhapl);
         lv.setAdapter(adapter);
+        arrayListHang= new ArrayList<>();
 
         anhxa();
         getdataHoaDonNhap();
@@ -93,6 +99,7 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
         Cursor dataHang = database.GetData("SELECT * FROM Hang");
         String mahang,tenSP,MauSac;
         int soLuongNhap,size;
+        byte[] anhsp=null;
         Double gianhap;
         arrayListChitietHoaDonNhapl.clear();
         while (dataChiTietHoaDonNhap.moveToNext()) {
@@ -106,11 +113,95 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
                if(mahangtrongkho.equalsIgnoreCase(mahang)){
                    tenSP=dataHang.getString(1);
                    MauSac=dataHang.getString(5);
+                   anhsp=dataHang.getBlob(9);
                }
            }
             dataHang.moveToFirst();
-            arrayListChitietHoaDonNhapl.add(new ChitietHoaDonNhap(soLuongNhap,size,mahang,tenSP,MauSac,gianhap));
+            arrayListChitietHoaDonNhapl.add(new ChitietHoaDonNhap(soLuongNhap,size,mahang,tenSP,MauSac,gianhap,anhsp));
         }
         adapter.notifyDataSetChanged();
     }
+
+
+    public void DialogXoa(String tenSp,String maHang, int Size, int soluongnhap){
+        Dialog dialog= new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_xoa);
+        dialog.show();
+
+        TextView textXacNhanSPXoa= dialog.findViewById(R.id.XacNhanXoaTXT);
+
+        Button btnXoa=dialog.findViewById(R.id.buttonXacNhanXoa);
+        Button btnHuyXoa=dialog.findViewById(R.id.buttonHuy);
+
+
+        Cursor dataHang = database.GetData("SELECT * FROM Hang WHERE MAHANG='"+maHang+"'");
+        arrayListHang.clear();
+        while (dataHang.moveToNext()) {
+            int SL = dataHang.getInt(2);
+            String TenHang = dataHang.getString(1);
+            String MaHang = dataHang.getString(0);
+            String MauSac = dataHang.getString(5);
+            String hangSX = dataHang.getString(4);
+            int SLSize41 = dataHang.getInt(6);
+            int SLSize42 = dataHang.getInt(7);
+            int SLSize43 = dataHang.getInt(8);
+            Double Gia = dataHang.getDouble(3);
+
+            arrayListHang.add(new Hang(MaHang, TenHang, hangSX, MauSac, SLSize41, SLSize42, SLSize43, SL, Gia, dataHang.getBlob(9)));
+        }
+
+
+        textXacNhanSPXoa.setText("Bạn có cắc chắn muốn xóa "+tenSp+"?");
+
+
+
+
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.QuerryData("Delete from ChiTietHoaDonNhap WHERE maHDNhap='"+arrayList.get(arrayList.size()-1).getMaHoaDon()+"' AND maHangNhap='"+maHang+"' AND Size='"+Size+"'");
+               for(int i=0;i<arrayListHang.size();i++){
+                   if(maHang.equalsIgnoreCase(arrayListHang.get(i).getMaHang())){
+                       int soluongsauxoa=arrayListHang.get(i).getSoLuong()-soluongnhap;
+                       database.QuerryData("Update Hang Set TongSl='"+soluongsauxoa+"' Where MAHANG='"+maHang+"' ");
+                       switch (Size){
+                           case 41:
+                               int slsize41sauxoa=arrayListHang.get(i).getSize41()-soluongnhap;
+                               database.QuerryData("Update Hang Set Size41='"+slsize41sauxoa+"' Where MAHANG='"+maHang+"' ");
+                               break;
+                           case 42:
+                               int slsize42sauxoa=arrayListHang.get(i).getSize42()-soluongnhap;
+                               database.QuerryData("Update Hang Set Size42='"+slsize42sauxoa+"' Where MAHANG='"+maHang+"' ");
+                               break;
+                           case 43:
+                               int slsize43sauxoa=arrayListHang.get(i).getSize43()-soluongnhap;
+                               database.QuerryData("Update Hang Set Size43='"+slsize43sauxoa+"' Where MAHANG='"+maHang+"' ");
+                               break;
+                       }
+                   }
+               }
+                Toast.makeText(Nhap_Hang_Activity.this,"Xóa thành công",Toast.LENGTH_LONG).show();
+                getdataHoaDonNhap();
+                getdataChiTietHoaDonNhap();
+                for(int i=0;i<arrayListChitietHoaDonNhapl.size();i++){
+                    tongtienhientai+=arrayListChitietHoaDonNhapl.get(i).getGiaNhap()*arrayListChitietHoaDonNhapl.get(i).getSoLuongNhap();
+                }
+                tongtiencuahpadon.setText("Tổng tiền: "+tongtienhientai);
+                dialog.dismiss();
+
+            }
+        });
+
+
+        btnHuyXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+    }
+
 }

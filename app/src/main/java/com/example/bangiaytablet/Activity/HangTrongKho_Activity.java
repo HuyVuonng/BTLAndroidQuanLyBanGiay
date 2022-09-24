@@ -24,6 +24,7 @@ import com.example.bangiaytablet.Class.Hang;
 import com.example.bangiaytablet.Database.DatabaseQuanLy;
 import com.example.bangiaytablet.R;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class HangTrongKho_Activity extends AppCompatActivity {
@@ -80,7 +81,7 @@ public class HangTrongKho_Activity extends AppCompatActivity {
                         String MaHang = dataHang.getString(0);
                         String MauSac= dataHang.getString(5);
                         Double Gia=dataHang.getDouble(3);
-                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia));
+                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                     }
                     adapter.notifyDataSetChanged();
                     adapter= new Hang_Adapter(HangTrongKho_Activity.this,R.layout.dong_hang_trong_kho,arrayList);
@@ -95,8 +96,9 @@ public class HangTrongKho_Activity extends AppCompatActivity {
                     int SL = dataHang.getInt(2);
                     String TenHang = dataHang.getString(1);
                     String MaHang = dataHang.getString(0);
+                    String MauSac= dataHang.getString(5);
                     Double Gia=dataHang.getDouble(3);
-                    arrayList.add(new Hang(MaHang,TenHang,SL,Gia));
+                    arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                 }
                 adapter.notifyDataSetChanged();
                 adapter= new Hang_Adapter(HangTrongKho_Activity.this,R.layout.dong_hang_trong_kho,arrayList);
@@ -121,7 +123,7 @@ public class HangTrongKho_Activity extends AppCompatActivity {
                         String MaHang = dataHang.getString(0);
                         String MauSac= dataHang.getString(5);
                         Double Gia=dataHang.getDouble(3);
-                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia));
+                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                     }
                     adapter.notifyDataSetChanged();
                     adapter= new Hang_Adapter(HangTrongKho_Activity.this,R.layout.dong_hang_trong_kho,arrayList);
@@ -142,7 +144,7 @@ public class HangTrongKho_Activity extends AppCompatActivity {
                         String MaHang = dataHang.getString(0);
                         String MauSac= dataHang.getString(5);
                         Double Gia=dataHang.getDouble(3);
-                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia));
+                        arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                     }
                     adapter.notifyDataSetChanged();
                     adapter= new Hang_Adapter(HangTrongKho_Activity.this,R.layout.dong_hang_trong_kho,arrayList);
@@ -165,7 +167,8 @@ public class HangTrongKho_Activity extends AppCompatActivity {
             int SLSize42=dataHang.getInt(7);
             int SLSize43=dataHang.getInt(8);
             Double Gia=dataHang.getDouble(3);
-            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia));
+            byte[] hinhanh=dataHang.getBlob(9);
+            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia,dataHang.getBlob(9)));
         }
         adapter.notifyDataSetChanged();
     }

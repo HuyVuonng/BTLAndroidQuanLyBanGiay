@@ -2,6 +2,8 @@ package com.example.bangiaytablet.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +49,7 @@ public class Nhap_Hang_Activity_Adapter extends BaseAdapter {
 
     private class ViewHolderNhap{
         TextView tvTenSPNhap,tvMaSPNhap,tvSLnhap,mausac,giaNhap,Size;
-        ImageView imgXoa;
+        ImageView imgXoa, anhsp;
     }
 
     @Override
@@ -66,6 +68,7 @@ public class Nhap_Hang_Activity_Adapter extends BaseAdapter {
             viewHolder.mausac=view.findViewById(R.id.mausacspDangnhap);
             viewHolder.giaNhap=view.findViewById(R.id.GiaspDangnhap);
             viewHolder.Size=view.findViewById(R.id.sizespDangnhap);
+            viewHolder.anhsp=view.findViewById(R.id.imageViewAnhSPNhap);
             view.setTag(viewHolder);
 
 
@@ -81,24 +84,19 @@ public class Nhap_Hang_Activity_Adapter extends BaseAdapter {
         viewHolder.mausac.setText("Màu: "+Sp.getMauSac());
         viewHolder.Size.setText("Size: "+Sp.getSizeNhap());
         viewHolder.giaNhap.setText("Giá nhập: "+Sp.getGiaNhap());
+        //chuyển byte[]->bitmap
+        byte[] hinhAnh= Sp.getAnhsp();
+        Bitmap bitmap= BitmapFactory.decodeByteArray(hinhAnh,0,hinhAnh.length);
+        viewHolder.anhsp.setImageBitmap(bitmap);
 
 
 
-//        viewHolder.imgNhap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                intent=new Intent(context, Them_SP_Activity.class);
-//                String tenSpThem= Sp.getTenHang();
-//                String maSpThem= Sp.getMaHang();
-//                int SLSp= Sp.getSoLuong();
-//                String SlSpThem=Integer.toString(SLSp);
-//                intent.putExtra("maSpThem",maSpThem);
-//                intent.putExtra("tenSpThem",tenSpThem);
-//                intent.putExtra("SLSPThem",SlSpThem);
-//                context.startActivity(intent);
-//                Toast.makeText(context,"themsp",Toast.LENGTH_LONG).show();
-//            }
-//        });
+        viewHolder.imgXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.DialogXoa(Sp.getTenhangNhap(),Sp.getMaHangNhap(),Sp.getSizeNhap(),Sp.getSoLuongNhap());
+            }
+        });
         return view;
     }
 }

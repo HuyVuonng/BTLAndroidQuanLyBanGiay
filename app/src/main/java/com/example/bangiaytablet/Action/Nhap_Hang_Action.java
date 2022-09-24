@@ -117,7 +117,7 @@ public class Nhap_Hang_Action extends AppCompatActivity {
             int SLSize42=dataHang.getInt(7);
             int SLSize43=dataHang.getInt(8);
             Double Gia=dataHang.getDouble(3);
-            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia));
+            arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia,dataHang.getBlob(9)));
         }
         adapter.notifyDataSetChanged();
     }}

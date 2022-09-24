@@ -48,6 +48,18 @@ public class DatabaseQuanLy extends SQLiteOpenHelper {
 //
 //    }
 
+    public void updateImageProduct(String maSp,byte[] hinhanh){
+        SQLiteDatabase database= getWritableDatabase();
+        String sql="UPDATE Hang SET hinhanh= ? WHERE MAHANG=? ";
+        SQLiteStatement statement=database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindBlob(1,hinhanh);
+        statement.bindString(2,maSp);
+
+        statement.executeUpdateDelete();
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 

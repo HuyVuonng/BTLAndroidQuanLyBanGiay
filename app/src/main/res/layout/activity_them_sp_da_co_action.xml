@@ -186,13 +186,7 @@
                 android:id="@+id/btnHuyThemSPMoi"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnThemanhMoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imgSpThem"
-            android:text="Thêm ảnh"
-            android:textSize="20sp"/>
+
     </RelativeLayout>
 
 </LinearLayout>

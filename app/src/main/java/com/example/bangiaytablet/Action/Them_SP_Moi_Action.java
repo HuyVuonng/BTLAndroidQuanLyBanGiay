@@ -17,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -28,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -167,9 +169,15 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
                             int maHD = arrayListHoaDonNhap.get(arrayListHoaDonNhap.size() - 1).getMaHoaDon();
 
                             //chuyển từ dataImageView ->byte[];
+                            BitmapDrawable bitmapDrawable= (BitmapDrawable) imghinhsp.getDrawable();
+                            Bitmap bitmap=bitmapDrawable.getBitmap();
+                            ByteArrayOutputStream byteArray= new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+                            byte[] hinhAnh= byteArray.toByteArray();
 
 
-                            database.QuerryData("INSERT INTO Hang VALUES('" + maHangThem + "','" + tenHangThem + "','" + slhangThemINT + "','" + giaban + "','" + thuonghieusp + "','" + mauSac + "','" + size41nhap + "','" + size42nhap + "','" + size43nhap + "')");
+                            database.QuerryData("INSERT INTO Hang VALUES('" + maHangThem + "','" + tenHangThem + "','" + slhangThemINT + "','" + giaban + "','" + thuonghieusp + "','" + mauSac + "','" + size41nhap + "','" + size42nhap + "','" + size43nhap + "','"+hinhAnh+"')");
+                            database.updateImageProduct(maHangThem,hinhAnh);
                             if (size41nhap > 0) {
                                 database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maHangThem + "','" + size41nhap + "','" + giaHagThemDouble + "',41)");
                             }
@@ -202,8 +210,8 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
         switch (requestCode){
             case REQUEST_CODE_CAMERA:
                 if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent,REQUEST_CODE_CAMERA);
+                    Intent intent1=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent1,REQUEST_CODE_CAMERA);
                 }
                 else {
                     Toast.makeText(Them_SP_Moi_Action.this,"Bạn không cấp quyền cho mở Camera",Toast.LENGTH_SHORT).show();
@@ -211,9 +219,9 @@ public class Them_SP_Moi_Action extends AppCompatActivity {
                 break;
             case REQUEST_CODE_FOLDER:
                 if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-                    Intent intent=new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent,REQUEST_CODE_FOLDER);
+                    Intent intent1=new Intent(Intent.ACTION_PICK);
+                    intent1.setType("image/*");
+                    startActivityForResult(intent1,REQUEST_CODE_FOLDER);
                 }
                 else {
                     Toast.makeText(Them_SP_Moi_Action.this,"Bạn không cấp quyền cho mở Folder",Toast.LENGTH_SHORT).show();
