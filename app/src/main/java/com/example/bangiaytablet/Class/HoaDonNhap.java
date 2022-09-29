@@ -3,20 +3,20 @@ package com.example.bangiaytablet.Class;
 public class HoaDonNhap {
     String ngayTaoHoaDon,nguoiNhap,ncc;
     int MaHoaDon;
-    float tongtien;
+    Double tongtien;
 
     public HoaDonNhap(String ngayTaoHoaDon, int maHoaDon) {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
         MaHoaDon = maHoaDon;
     }
 
-    public HoaDonNhap(String ngayTaoHoaDon, int maHoaDon, float tongtien) {
+    public HoaDonNhap(String ngayTaoHoaDon, int maHoaDon, Double tongtien) {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
         MaHoaDon = maHoaDon;
         this.tongtien = tongtien;
     }
 
-    public HoaDonNhap(String ngayTaoHoaDon, String nguoiNhap, String ncc, int maHoaDon, float tongtien) {
+    public HoaDonNhap(String ngayTaoHoaDon, String nguoiNhap, String ncc, int maHoaDon, Double tongtien) {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
         this.nguoiNhap = nguoiNhap;
         this.ncc = ncc;
@@ -47,11 +47,11 @@ public class HoaDonNhap {
         this.ncc = ncc;
     }
 
-    public float getTongtien() {
+    public Double getTongtien() {
         return tongtien;
     }
 
-    public void setTongtien(float tongtien) {
+    public void setTongtien(Double tongtien) {
         this.tongtien = tongtien;
     }
 

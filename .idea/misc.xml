@@ -7,6 +7,8 @@
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/drawable/bg_right.xml" value="0.181" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_dang_ky.xml" value="0.21965579710144928" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_dang_nhap.xml" value="0.264" />
+        <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_dshd_chi_tiet_hoa_don_nhap.xml" value="0.2198549410698096" />
+        <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_dssp_chi_tiet_hoa_don_nhap.xml" value="0.21376656690893545" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_hang_trong_kho.xml" value="0.16" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_main.xml" value="0.21965579710144928" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/activity_nhap_hang.xml" value="0.16799999999999998" />
@@ -18,6 +20,8 @@
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dialog_themhoadon_nhap.xml" value="0.176" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dialog_xoa.xml" value="0.2" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dong_cac_san_pham_dang_nhap_trong_hoa_don.xml" value="0.2" />
+        <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dong_ds_hang_cua_hoa_don_nhap.xml" value="0.2198549410698096" />
+        <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dong_ds_hd_nhap.xml" value="0.2198549410698096" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dong_hang_trong_kho.xml" value="0.176" />
         <entry key="..\:/ki1_nam3/LT_Android/BanGiayTablet/app/src/main/res/layout/dong_nhap_hang.xml" value="0.2" />
       </map>

@@ -2,7 +2,7 @@ package com.example.bangiaytablet.Class;
 
 public class ChitietHoaDonNhap {
     int MaHoaDonNhap,soLuongNhap,SizeNhap;
-    String MaHangNhap,tenhangNhap,MauSac;
+    String MaHangNhap,tenhangNhap,MauSac,thuonghieu;
     Double giaNhap;
     byte[] anhsp;
 
@@ -42,6 +42,26 @@ public class ChitietHoaDonNhap {
         MauSac = mauSac;
         this.giaNhap = giaNhap;
         this.anhsp = anhsp;
+    }
+
+    public ChitietHoaDonNhap(int maHoaDonNhap, int soLuongNhap, int sizeNhap, String maHangNhap, String tenhangNhap, String mauSac, String thuonghieu, Double giaNhap, byte[] anhsp) {
+        MaHoaDonNhap = maHoaDonNhap;
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
+        this.tenhangNhap = tenhangNhap;
+        MauSac = mauSac;
+        this.thuonghieu = thuonghieu;
+        this.giaNhap = giaNhap;
+        this.anhsp = anhsp;
+    }
+
+    public String getThuonghieu() {
+        return thuonghieu;
+    }
+
+    public void setThuonghieu(String thuonghieu) {
+        this.thuonghieu = thuonghieu;
     }
 
     public byte[] getAnhsp() {

@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bangiaytablet.Class.TaiKhoan;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     DatabaseQuanLy database;
     ArrayList<TaiKhoan> arrayListTaiKhoan;
+    String user;
     RelativeLayout hangtrongkho,nhaphang,xuathang,hoadonnhap,hoadonxuat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String hoTenNguoiNhap=getIntent().getStringExtra("TenChuTaiKhoan");
+
         hangtrongkho=findViewById(R.id.hangtrongkho);
         nhaphang=findViewById(R.id.nhaphang);
         xuathang=findViewById(R.id.xuathang);
         hoadonnhap=findViewById(R.id.hoadonnhap);
         hoadonxuat=findViewById(R.id.hoadonxuat);
+
+
+
+        TextView userDN=findViewById(R.id.userDN);
+        userDN.setText("Chào mừng, "+hoTenNguoiNhap);
+
 
         arrayListTaiKhoan=new ArrayList<>();
 
@@ -75,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
                 EditText ngayTaoHoaDon= dialog.findViewById(R.id.editTextNgayLapHoaDonNhap);
                 EditText ncc= dialog.findViewById(R.id.editTextNhaCungCap);
+
 
                 Button btnTaoHoaDon= dialog.findViewById(R.id.buttonThemHoaDonNhap);
                 Button btnHuyTaoHoaDon= dialog.findViewById(R.id.buttonHuyTaoHoaDonNhap);
@@ -213,14 +223,14 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        hoadonnhap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                intent= new Intent(MainActivity.this,QLHoaDonNhap.class);
-//                startActivity(intent);
-//                Toast.makeText(MainActivity.this, "Hóa đơn nhập", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        hoadonnhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent= new Intent(MainActivity.this,DSHD_ChiTietHoaDonNhap_Activity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Hóa đơn nhập", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        hoadonxuat.setOnClickListener(new View.OnClickListener() {
 //            @Override

@@ -26,6 +26,8 @@ public class DangNhap_Activity extends AppCompatActivity {
     ArrayList<TaiKhoan> taiKhoanArrayList;
     String user,pass;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                             Intent intent = new Intent(DangNhap_Activity.this,MainActivity.class);
                             intent.putExtra("TenChuTaiKhoan", taiKhoanArrayList.get(i).getName());
                             startActivity(intent);
+
                             trangthaitaikhoan=true;
                             break;
                         }
@@ -120,7 +123,6 @@ public class DangNhap_Activity extends AppCompatActivity {
         dangnhap=findViewById(R.id.btnDangNhap);
         quenMK=findViewById(R.id.tvquenmk);
     }
-
 
 
 }
