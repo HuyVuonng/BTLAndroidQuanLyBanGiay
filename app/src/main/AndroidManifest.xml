@@ -17,13 +17,18 @@
         android:theme="@style/Theme.BanGiayTablet"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.XuatHang_Activity"
+            android:exported="false"
+            android:parentActivityName=".Activity.MainActivity"
+            android:label="Xuất hàng"/>
+        <activity
             android:name=".Activity.DSSP_ChiTietHoaDonNhap_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.DSHD_ChiTietHoaDonNhap_Activity"/>
+            android:parentActivityName=".Activity.DSHD_ChiTietHoaDonNhap_Activity" />
         <activity
             android:name=".Activity.DSHD_ChiTietHoaDonNhap_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.MainActivity"/>
+            android:parentActivityName=".Activity.MainActivity" />
         <activity
             android:name=".Action.Them_SP_Da_Co_Action"
             android:exported="false"

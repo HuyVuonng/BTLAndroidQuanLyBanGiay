@@ -1,7 +1,7 @@
 package com.example.bangiaytablet.Class;
 
 public class TaiKhoan {
-    int id;
+    int id, trangthai;
     String username, password,name;
 
     public TaiKhoan(int id, String username, String password) {
@@ -15,6 +15,18 @@ public class TaiKhoan {
         this.username = username;
         this.password = password;
         this.name = name;
+    }
+
+    public TaiKhoan(String name) {
+        this.name = name;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
 
     public String getName() {

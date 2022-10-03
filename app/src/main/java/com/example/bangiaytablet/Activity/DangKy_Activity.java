@@ -59,7 +59,7 @@ public class DangKy_Activity extends AppCompatActivity {
                 else{
                     if (nhaplaimk.equals(mkTK)){
                         if(arrayTaiKhoan.size()==0){
-                            database.QuerryData("INSERT INTO User VALUES(null,'"+tentkDk+"','"+mkTK+"','"+hoten+"')");
+                            database.QuerryData("INSERT INTO User VALUES(null,'"+tentkDk+"','"+mkTK+"','"+hoten+"',0)");
                             intent = new Intent(DangKy_Activity.this, DangNhap_Activity.class);
                             intent.putExtra("userreg", tentkDk);
                             intent.putExtra("passreg", mkTK);

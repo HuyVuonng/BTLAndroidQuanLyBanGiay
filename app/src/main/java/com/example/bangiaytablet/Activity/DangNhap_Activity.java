@@ -40,8 +40,9 @@ public class DangNhap_Activity extends AppCompatActivity {
 
 
         //Tao bang
-        database.QuerryData("CREATE TABLE IF NOT EXISTS User (ID INTEGER PRIMARY KEY AUTOINCREMENT,TenDN VARCHAR(50),MatKhau VARCHAR (25),HoTen NVARCHAR(50))");
+        database.QuerryData("CREATE TABLE IF NOT EXISTS User (ID INTEGER PRIMARY KEY AUTOINCREMENT,TenDN VARCHAR(50),MatKhau VARCHAR (25),HoTen NVARCHAR(50),Trangthai INTEGER)");
 
+        database.QuerryData("UPDATE User SET Trangthai=0");
 //        database.QuerryData("INSERT INTO User VALUES(null,'huy','1234567')");
         anhxa();
         user = getIntent().getStringExtra("userreg");
@@ -72,6 +73,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                     boolean trangthaitaikhoan=false;
                     for(int i =0; i< taiKhoanArrayList.size(); i++){
                         if(tenDN1.equals(taiKhoanArrayList.get(i).getUsername()) && mk1.equals(taiKhoanArrayList.get(i).getPassword())){
+                            database.QuerryData("UPDATE User SET Trangthai=1 WHERE TenDN='"+tenDN1+"'");
                             Intent intent = new Intent(DangNhap_Activity.this,MainActivity.class);
                             intent.putExtra("TenChuTaiKhoan", taiKhoanArrayList.get(i).getName());
                             startActivity(intent);

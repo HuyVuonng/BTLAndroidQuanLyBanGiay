@@ -1,18 +1,22 @@
 package com.example.bangiaytablet.Class;
 
 public class HoaDonXuat {
-    String ngayTaoHoaDon;
+    String ngayTaoHoaDon,nguoiXuat,nguoiMua;
     int MaHoaDon;
-    float tongtien;
+    Double tongtien;
 
-    public HoaDonXuat(String ngayTaoHoaDon, int maHoaDon, float tongtien) {
+    public HoaDonXuat(String ngayTaoHoaDon, String nguoiXuat, String nguoiMua, int maHoaDon, Double tongtien) {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
+        this.nguoiXuat = nguoiXuat;
+        this.nguoiMua = nguoiMua;
         MaHoaDon = maHoaDon;
         this.tongtien = tongtien;
     }
 
-    public HoaDonXuat(String ngayTaoHoaDon, int maHoaDon) {
+    public HoaDonXuat(String ngayTaoHoaDon, String nguoiXuat, String nguoiMua, int maHoaDon) {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
+        this.nguoiXuat = nguoiXuat;
+        this.nguoiMua = nguoiMua;
         MaHoaDon = maHoaDon;
     }
 
@@ -24,6 +28,22 @@ public class HoaDonXuat {
         this.ngayTaoHoaDon = ngayTaoHoaDon;
     }
 
+    public String getNguoiXuat() {
+        return nguoiXuat;
+    }
+
+    public void setNguoiXuat(String nguoiXuat) {
+        this.nguoiXuat = nguoiXuat;
+    }
+
+    public String getNguoiMua() {
+        return nguoiMua;
+    }
+
+    public void setNguoiMua(String nguoiMua) {
+        this.nguoiMua = nguoiMua;
+    }
+
     public int getMaHoaDon() {
         return MaHoaDon;
     }
@@ -32,11 +52,11 @@ public class HoaDonXuat {
         MaHoaDon = maHoaDon;
     }
 
-    public float getTongtien() {
+    public Double getTongtien() {
         return tongtien;
     }
 
-    public void setTongtien(float tongtien) {
+    public void setTongtien(Double tongtien) {
         this.tongtien = tongtien;
     }
 }
