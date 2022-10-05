@@ -2,6 +2,7 @@ package com.example.bangiaytablet.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bangiaytablet.Action.Xuat_Hang_Action;
 import com.example.bangiaytablet.Adapter.Nhap_Hang_Activity_Adapter;
 import com.example.bangiaytablet.Adapter.Xuat_Hang_Activity_Adapter;
 import com.example.bangiaytablet.Class.ChiTiethoaDonXuat;
@@ -15,6 +16,7 @@ import com.example.bangiaytablet.R;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -59,6 +61,14 @@ public class XuatHang_Activity extends AppCompatActivity {
             tongtienhientai+=arrayListChitietHoaDonXuat.get(i).getGiaXuat()*arrayListChitietHoaDonXuat.get(i).getSoLuongXuat();
         }
         tongtiencuahoadon.setText("Tổng tiền: "+tongtienhientai);
+
+        imgvThemSp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent= new Intent(XuatHang_Activity.this, Xuat_Hang_Action.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getdataChiTietHoaDonXuat() {

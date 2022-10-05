@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bangiaytablet.Action.Nhap_Hang_Action;
 import com.example.bangiaytablet.Class.TaiKhoan;
 import com.example.bangiaytablet.Database.DatabaseQuanLy;
 import com.example.bangiaytablet.R;
@@ -79,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         nhaphang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 Dialog dialog= new Dialog(MainActivity.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -239,14 +239,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        hoadonxuat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                intent= new Intent(MainActivity.this,QLHoaDonXuat.class);
-//                startActivity(intent);
-//                Toast.makeText(MainActivity.this, "Hóa đơn xuất", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        hoadonxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent= new Intent(MainActivity.this,DSHD_ChiTietHoaDonXuat_Acivity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Hóa đơn xuất", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

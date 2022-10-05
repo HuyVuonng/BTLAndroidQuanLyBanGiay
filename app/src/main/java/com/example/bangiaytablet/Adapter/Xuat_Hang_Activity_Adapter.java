@@ -62,7 +62,7 @@ public class Xuat_Hang_Activity_Adapter extends BaseAdapter {
             viewHolder.tvTenSPXuat= view.findViewById(R.id.tenspDangXuat);
             viewHolder.tvMaSPXuat=view.findViewById(R.id.maspDangXuat);
             viewHolder.tvSLXuat=view.findViewById(R.id.soluongspDangXuat);
-            viewHolder.imgXoa=view.findViewById(R.id.btnXoaSPtrongDSDANgXuat);
+//            viewHolder.imgXoa=view.findViewById(R.id.btnXoaSPtrongDSDANgXuat);
             viewHolder.mausac=view.findViewById(R.id.mausacspDangXuat);
             viewHolder.giaXuat=view.findViewById(R.id.GiaspDangXuat);
             viewHolder.Size=view.findViewById(R.id.sizespDangXuat);
@@ -89,12 +89,12 @@ public class Xuat_Hang_Activity_Adapter extends BaseAdapter {
 
 
 
-        viewHolder.imgXoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        viewHolder.imgXoa.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                context.DialogXoa(Sp.getTenhangNhap(),Sp.getMaHangNhap(),Sp.getSizeNhap(),Sp.getSoLuongNhap());
-            }
-        });
+//            }
+//        });
         return view;
     }
 }

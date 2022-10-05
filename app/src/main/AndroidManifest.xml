@@ -17,10 +17,22 @@
         android:theme="@style/Theme.BanGiayTablet"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.DSHD_ChiTietHoaDonXuat_Acivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.MainActivity"/>
+        <activity
+            android:name=".Action.Sp_Xuat_Action"
+            android:exported="false"
+            android:parentActivityName=".Action.Xuat_Hang_Action" />
+        <activity
+            android:name=".Action.Xuat_Hang_Action"
+            android:exported="false"
+            android:parentActivityName=".Activity.XuatHang_Activity" />
+        <activity
             android:name=".Activity.XuatHang_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.MainActivity"
-            android:label="Xuất hàng"/>
+            android:label="Xuất hàng"
+            android:parentActivityName=".Activity.MainActivity" />
         <activity
             android:name=".Activity.DSSP_ChiTietHoaDonNhap_Activity"
             android:exported="false"

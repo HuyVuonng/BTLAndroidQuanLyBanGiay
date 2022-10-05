@@ -20,6 +20,11 @@ public class HoaDonXuat {
         MaHoaDon = maHoaDon;
     }
 
+    public HoaDonXuat(String ngayTaoHoaDon, int maHoaDon) {
+        this.ngayTaoHoaDon = ngayTaoHoaDon;
+        MaHoaDon = maHoaDon;
+    }
+
     public String getNgayTaoHoaDon() {
         return ngayTaoHoaDon;
     }

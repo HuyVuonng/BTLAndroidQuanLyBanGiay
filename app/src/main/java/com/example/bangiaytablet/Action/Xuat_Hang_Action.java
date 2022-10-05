@@ -13,46 +13,37 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.bangiaytablet.Activity.HangTrongKho_Activity;
-import com.example.bangiaytablet.Adapter.Hang_Adapter;
 import com.example.bangiaytablet.Adapter.Nhap_Hang_Action_Adapter;
+import com.example.bangiaytablet.Adapter.Xuat_Hang_Action_Adapter;
 import com.example.bangiaytablet.Class.Hang;
 import com.example.bangiaytablet.Database.DatabaseQuanLy;
 import com.example.bangiaytablet.R;
 
 import java.util.ArrayList;
 
-public class Nhap_Hang_Action extends AppCompatActivity {
-
+public class Xuat_Hang_Action extends AppCompatActivity {
     DatabaseQuanLy database;
-    Nhap_Hang_Action_Adapter adapter;
+    Xuat_Hang_Action_Adapter adapter;
     ArrayList<Hang> arrayList;
     EditText timkiemsp;
     ListView lv;
     Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nhap_hang_action);
+        setContentView(R.layout.activity_xuat_hang_action);
 
         arrayList=new ArrayList<>();
-        lv=findViewById(R.id.lvloaigiayNhap);
-        timkiemsp=findViewById(R.id.edtTimKiemNhapHang);
-        adapter = new Nhap_Hang_Action_Adapter(this,R.layout.dong_nhap_hang,arrayList);
+        lv=findViewById(R.id.lvloaigiayXuat);
+        timkiemsp=findViewById(R.id.edtTimKiemXuatHang);
+        adapter = new Xuat_Hang_Action_Adapter(this,R.layout.dong_xuat_hang,arrayList);
         lv.setAdapter(adapter);
         //Tao DB
         database = new DatabaseQuanLy(this, "QuanLyBanGiayDn.sqlite", null, 1);
-
         hienthiDL();
 
-        ImageView themSpmoi= findViewById(R.id.imageViewThemSPMoi);
-        themSpmoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(Nhap_Hang_Action.this,Them_SP_Moi_Action.class);
-                startActivity(intent);
-            }
-        });
+
 
         timkiemsp.addTextChangedListener(new TextWatcher() {
             @Override
@@ -62,6 +53,7 @@ public class Nhap_Hang_Action extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
                 String NDTIM= timkiemsp.getText().toString().trim();
                 if(TextUtils.isEmpty(NDTIM)){
                     Cursor dataHang = database.GetData("SELECT * FROM Hang");
@@ -75,7 +67,7 @@ public class Nhap_Hang_Action extends AppCompatActivity {
                         arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                     }
                     adapter.notifyDataSetChanged();
-                    adapter= new Nhap_Hang_Action_Adapter(Nhap_Hang_Action.this,R.layout.dong_nhap_hang,arrayList);
+                    adapter= new Xuat_Hang_Action_Adapter(Xuat_Hang_Action.this,R.layout.dong_xuat_hang,arrayList);
                     lv.setAdapter(adapter);
                     return;
                 }
@@ -92,8 +84,9 @@ public class Nhap_Hang_Action extends AppCompatActivity {
                     arrayList.add(new Hang(MaHang,TenHang,MauSac,SL,Gia,dataHang.getBlob(9)));
                 }
                 adapter.notifyDataSetChanged();
-                adapter= new Nhap_Hang_Action_Adapter(Nhap_Hang_Action.this,R.layout.dong_nhap_hang,arrayList);
+                adapter= new Xuat_Hang_Action_Adapter(Xuat_Hang_Action.this,R.layout.dong_xuat_hang,arrayList);
                 lv.setAdapter(adapter);
+
             }
 
             @Override
@@ -101,7 +94,6 @@ public class Nhap_Hang_Action extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void hienthiDL() {
@@ -120,4 +112,5 @@ public class Nhap_Hang_Action extends AppCompatActivity {
             arrayList.add(new Hang(MaHang,TenHang,hangSX,MauSac,SLSize41,SLSize42,SLSize43,SL,Gia,dataHang.getBlob(9)));
         }
         adapter.notifyDataSetChanged();
-    }}
+    }
+}

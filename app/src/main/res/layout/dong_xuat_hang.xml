@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +23,7 @@
             android:layout_centerVertical="true">
 
             <TextView
-                android:id="@+id/tenspDangXuat"
+                android:id="@+id/tensptrongkhonsptrongkhoXuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -32,8 +31,8 @@
                 android:textAllCaps="true"
                 android:textSize="35dp" />
             <TextView
-                android:layout_below="@+id/tenspDangXuat"
-                android:id="@+id/maspDangXuat"
+                android:layout_below="@+id/tensptrongkhonsptrongkhoXuat"
+                android:id="@+id/masptrongkhoXuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -42,59 +41,49 @@
                 android:textSize="20dp"/>
 
             <TextView
-                android:id="@+id/soluongspDangXuat"
+                android:id="@+id/soluongsptrongkhoXuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tenspDangXuat"
-                android:layout_toRightOf="@+id/maspDangXuat"
+                android:layout_below="@+id/tensptrongkhonsptrongkhoXuat"
+                android:layout_toRightOf="@+id/masptrongkhoXuat"
                 android:layout_marginLeft="30dp"
                 android:text="SL:"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/mausacspDangXuat"
+                android:id="@+id/mausacspXuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tenspDangXuat"
+                android:layout_below="@+id/tensptrongkhonsptrongkhoXuat"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/soluongsptrongkhoXuat"
                 android:text="Màu sắc:"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/soluongspDangXuat"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/sizespDangXuat"
+                android:id="@+id/giaXuatKho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tenspDangXuat"
+                android:layout_below="@+id/tensptrongkhonsptrongkhoXuat"
                 android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/mausacspDangXuat"
-                android:text="Size:"
+                android:layout_toRightOf="@+id/mausacspXuat"
+                android:text="Giá:"
                 android:textAllCaps="true"
                 android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/GiaspDangXuat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tenspDangXuat"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/sizespDangXuat"
-                android:text="Giá xuất:"
-                android:textAllCaps="true"
-                android:textSize="20dp" />
-
-<!--            <ImageView-->
-<!--                android:id="@+id/btnXoaSPtrongDSDANgXuat"-->
-<!--                android:layout_width="82dp"-->
-<!--                android:layout_height="57dp"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:src="@drawable/ic_action_delete" />-->
+            <ImageView
+                android:id="@+id/btnXuatThemSP"
+                android:layout_width="82dp"
+                android:layout_height="57dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_action_plus" />
 
         </RelativeLayout>
 
 
 
     </RelativeLayout>
+
 </LinearLayout>
