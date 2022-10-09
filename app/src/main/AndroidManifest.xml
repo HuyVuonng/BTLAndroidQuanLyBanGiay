@@ -17,17 +17,31 @@
         android:theme="@style/Theme.BanGiayTablet"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.LSCacLanNhapCuaSP_Activity"
+            android:exported="false"
+            android:parentActivityName=".Activity.HangTrongKho_Activity"
+            android:label="Lịch sử nhập hàng của mặt hàng"/>
+
+        <activity
+            android:name=".Activity.DSSP_ChiTietHoaDonXuat_Activity"
+            android:exported="false"
+            android:parentActivityName=".Activity.DSHD_ChiTietHoaDonXuat_Acivity"
+            android:label="Danh sách các sản phẩm trong hóa đơn"/>
+        <activity
             android:name=".Activity.DSHD_ChiTietHoaDonXuat_Acivity"
             android:exported="false"
-            android:parentActivityName=".Activity.MainActivity"/>
+            android:parentActivityName=".Activity.MainActivity"
+            android:label="Danh sách hóa đơn xuất"/>
         <activity
             android:name=".Action.Sp_Xuat_Action"
             android:exported="false"
-            android:parentActivityName=".Action.Xuat_Hang_Action" />
+            android:parentActivityName=".Action.Xuat_Hang_Action"
+            android:label="Xuất hàng"/>
         <activity
             android:name=".Action.Xuat_Hang_Action"
             android:exported="false"
-            android:parentActivityName=".Activity.XuatHang_Activity" />
+            android:parentActivityName=".Activity.XuatHang_Activity"
+            android:label="Xuất hàng"/>
         <activity
             android:name=".Activity.XuatHang_Activity"
             android:exported="false"
@@ -36,31 +50,38 @@
         <activity
             android:name=".Activity.DSSP_ChiTietHoaDonNhap_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.DSHD_ChiTietHoaDonNhap_Activity" />
+            android:parentActivityName=".Activity.DSHD_ChiTietHoaDonNhap_Activity"
+            android:label="Danh sách các sản phẩm trong hóa đơn"/>
         <activity
             android:name=".Activity.DSHD_ChiTietHoaDonNhap_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.MainActivity" />
+            android:parentActivityName=".Activity.MainActivity"
+            android:label="Danh sách hóa đơn nhập"/>
         <activity
             android:name=".Action.Them_SP_Da_Co_Action"
             android:exported="false"
-            android:parentActivityName=".Action.Nhap_Hang_Action" />
+            android:parentActivityName=".Action.Nhap_Hang_Action"
+            android:label="Nhập hàng"/>
         <activity
             android:name=".Action.Them_SP_Moi_Action"
             android:exported="false"
-            android:parentActivityName=".Action.Nhap_Hang_Action" />
+            android:parentActivityName=".Action.Nhap_Hang_Action"
+            android:label="Nhập hàng mới"/>
         <activity
             android:name=".Action.Nhap_Hang_Action"
             android:exported="false"
-            android:parentActivityName=".Activity.Nhap_Hang_Activity" />
+            android:parentActivityName=".Activity.Nhap_Hang_Activity"
+            android:label="Nhập hàng"/>
         <activity
             android:name=".Activity.Nhap_Hang_Activity"
             android:exported="false"
-            android:parentActivityName=".Activity.MainActivity" />
+            android:parentActivityName=".Activity.MainActivity"
+            android:label="Nhập hàng"/>
         <activity
             android:name=".Action.SuaSP_Action"
             android:exported="false"
-            android:parentActivityName=".Activity.HangTrongKho_Activity" />
+            android:parentActivityName=".Activity.HangTrongKho_Activity"
+            android:label="Sửa sản phẩm"/>
         <activity
             android:name=".Activity.HangTrongKho_Activity"
             android:exported="false"

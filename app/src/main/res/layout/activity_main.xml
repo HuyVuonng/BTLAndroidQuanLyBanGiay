@@ -24,7 +24,7 @@
         <RelativeLayout
             android:id="@+id/hangtrongkho"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -109,7 +109,7 @@
         <RelativeLayout
             android:id="@+id/nhaphang"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/hangtrongkho"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
@@ -194,7 +194,7 @@
         <RelativeLayout
             android:id="@+id/xuathang"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/nhaphang"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
@@ -278,7 +278,7 @@
         <RelativeLayout
             android:id="@+id/hoadonnhap"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/xuathang"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
@@ -362,7 +362,7 @@
         <RelativeLayout
             android:id="@+id/hoadonxuat"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_below="@+id/hoadonnhap"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"

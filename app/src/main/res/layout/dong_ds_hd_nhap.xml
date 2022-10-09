@@ -7,13 +7,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp">
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/maHDNhap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="15dp"
             android:text="Mã hóa đơn"
             android:textAllCaps="true"
             android:textSize="35sp" />
@@ -26,15 +26,16 @@
             android:text="Tổng tiền"
             android:textAllCaps="true"
             android:textSize="25sp" />
+
         <TextView
-            android:layout_below="@+id/maHDNhap"
             android:id="@+id/ngayNhapHang"
-            android:layout_marginLeft="80dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/maHDNhap"
+            android:layout_marginLeft="15dp"
             android:text="Ngày nhập"
             android:textAllCaps="true"
-            android:textSize="23sp"/>
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/nhaCCNhapHang"

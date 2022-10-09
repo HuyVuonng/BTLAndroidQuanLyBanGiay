@@ -42,14 +42,18 @@ public class DSHD_ChiTietHoaDonXuat_Acivity extends AppCompatActivity {
 
         hienthiDL();
 
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                String maHD=Integer.toString(arrayList.get(i).getMaHoaDon());
-//                intent =new Intent(DSHD_ChiTietHoaDonXuat_Acivity.this,DSSP_ChiTietHoaDonNhap_Activity.class);
-//                intent.putExtra("maHDNhap",maHD);
-//                startActivity(intent);
-//                Toast.makeText(DSHD_ChiTietHoaDonXuat_Acivity.this,maHD,Toast.LENGTH_SHORT).show();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String maHD=Integer.toString(arrayList.get(i).getMaHoaDon());
+                intent =new Intent(DSHD_ChiTietHoaDonXuat_Acivity.this,DSSP_ChiTietHoaDonXuat_Activity.class);
+                intent.putExtra("maHDXuat",maHD);
+                startActivity(intent);
+                Toast.makeText(DSHD_ChiTietHoaDonXuat_Acivity.this,maHD,Toast.LENGTH_SHORT).show();
+            }
+        });
+//
+//       Toast.makeText(DSHD_ChiTietHoaDonXuat_Acivity.this,maHD,Toast.LENGTH_SHORT).show();
 //            }
 //        });
     }

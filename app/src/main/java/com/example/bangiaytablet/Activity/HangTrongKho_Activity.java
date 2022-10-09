@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -62,6 +63,17 @@ public class HangTrongKho_Activity extends AppCompatActivity {
 //       database.QuerryData("INSERT INTO Hang VALUES('MH2','Giày NIKE',10,20000,'ADIDAS','Den',5,2,3)");
 
         hienthiDL();
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String maHang=arrayList.get(i).getMaHang();
+                intent =new Intent(HangTrongKho_Activity.this,LSCacLanNhapCuaSP_Activity.class);
+                intent.putExtra("maHDHang",maHang);
+                startActivity(intent);
+                Toast.makeText(HangTrongKho_Activity.this,maHang,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         edtTimKiem.addTextChangedListener(new TextWatcher() {
             @Override
