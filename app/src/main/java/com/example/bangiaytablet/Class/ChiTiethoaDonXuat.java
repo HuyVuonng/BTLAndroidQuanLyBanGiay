@@ -18,6 +18,11 @@ public class ChiTiethoaDonXuat {
         this.anhsp = anhsp;
     }
 
+    public ChiTiethoaDonXuat(int soLuongXuat, int sizeXuat, String maHangXuat) {
+        this.soLuongXuat = soLuongXuat;
+        SizeXuat = sizeXuat;
+        MaHangXuat = maHangXuat;
+    }
 
     public ChiTiethoaDonXuat(int soLuongXuat, int sizeXuat, String maHangXuat, String tenhangXuat, String mauSac, Double giaXuat, byte[] anhsp) {
         this.soLuongXuat = soLuongXuat;

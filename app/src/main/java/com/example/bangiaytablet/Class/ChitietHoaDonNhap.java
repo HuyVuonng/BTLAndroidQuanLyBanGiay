@@ -14,6 +14,12 @@ public class ChitietHoaDonNhap {
         this.giaNhap = giaNhap;
     }
 
+    public ChitietHoaDonNhap(int soLuongNhap, int sizeNhap, String maHangNhap) {
+        this.soLuongNhap = soLuongNhap;
+        SizeNhap = sizeNhap;
+        MaHangNhap = maHangNhap;
+    }
+
     public ChitietHoaDonNhap(int soLuongNhap, int sizeNhap, String maHangNhap, String tenhangNhap, String mauSac, Double giaNhap) {
         this.soLuongNhap = soLuongNhap;
         SizeNhap = sizeNhap;

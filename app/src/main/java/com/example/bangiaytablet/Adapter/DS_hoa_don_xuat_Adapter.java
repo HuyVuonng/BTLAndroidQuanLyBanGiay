@@ -76,7 +76,7 @@ public class DS_hoa_don_xuat_Adapter extends BaseAdapter {
         viewHolder.NgayXuat.setText("Ngày tạo: "+HD.getNgayTaoHoaDon());
         viewHolder.maHD.setText("Mã HD: "+maHD);
         viewHolder.tongtien.setText("Tổng tiền: "+tongTienString);
-        viewHolder.nguoimua.setText("Nhà cung cấp: "+HD.getNguoiMua());
+        viewHolder.nguoimua.setText("Người mua: "+HD.getNguoiMua());
         viewHolder.nguoiXuat.setText("Người nhập: "+HD.getNguoiXuat());
         return view;
     }

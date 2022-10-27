@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                                 if(dateNhap.after(datehientai)){
                                     Toast.makeText(MainActivity.this, "Ngày nhập không được quá ngày hiện tại", Toast.LENGTH_SHORT).show();
                                 }
+                                else if(TextUtils.isEmpty(NhaCungCap)){
+                                    Toast.makeText(MainActivity.this, "Hãy nhập nhà cung cấp", Toast.LENGTH_SHORT).show();
+                                }
                                 else{
                                     database.QuerryData("INSERT INTO HoaDonNhap VALUES(null,'"+ngayTaoNhap+"','"+hoTenNguoiNhap+"','"+NhaCungCap+"')");
                                     Toast.makeText(MainActivity.this, "Tạo hóa đơn thành công", Toast.LENGTH_SHORT).show();
@@ -207,6 +210,10 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(dateXuat.after(datehientai)){
                                     Toast.makeText(MainActivity.this, "Ngày nhập không được quá ngày hiện tại", Toast.LENGTH_SHORT).show();
+                                }
+                                else if(TextUtils.isEmpty(nguoimua)){
+                                    Toast.makeText(MainActivity.this, "Hãy nhập người mua", Toast.LENGTH_SHORT).show();
+
                                 }
                                 else{
                                     database.QuerryData("INSERT INTO HoaDonXuat VALUES(null,'"+ngayTaoXuat+"','"+hoTenNguoiNhap+"','"+nguoimua+"')");

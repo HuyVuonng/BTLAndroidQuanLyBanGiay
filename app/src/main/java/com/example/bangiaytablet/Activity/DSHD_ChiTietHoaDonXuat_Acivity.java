@@ -60,7 +60,7 @@ public class DSHD_ChiTietHoaDonXuat_Acivity extends AppCompatActivity {
 
     private void hienthiDL() {
         Cursor dataHDXuat = database.GetData("SELECT * FROM HoaDonXuat order by maHDXuat DESC");
-        Cursor dataChitietHoadonXuat = database.GetData("SELECT maHDXuat, SUM(GiaXuat) as TONGTIENXuat,SUM(SlXuat) as TONGSOSP,maHangXuat FROM ChiTietHoaDonXuat group by maHDXuat,maHangXuat order by maHDXuat DESC");
+        Cursor dataChitietHoadonXuat = database.GetData("SELECT maHDXuat, GiaXuat, SlXuat ,maHangXuat FROM ChiTietHoaDonXuat  order by maHDXuat DESC");
         arrayList.clear();
         while (dataHDXuat.moveToNext()) {
             Double TONGTIENXuat=0.0;

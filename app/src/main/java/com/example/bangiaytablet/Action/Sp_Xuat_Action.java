@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -78,10 +79,14 @@ public class Sp_Xuat_Action extends AppCompatActivity {
                 break;
             }
         }
+        SlSpMua.setEnabled(false);
+        btnThem.setEnabled(false);
         rdoSize41.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(rdoSize41.isChecked()){
+                    SlSpMua.setEnabled(true);
+                    btnThem.setEnabled(true);
                     slTRongKho.setText("Số Lượng sản phẩm còn: "+size41nhan);
                 }
             }
@@ -91,6 +96,8 @@ public class Sp_Xuat_Action extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(rdoSize42.isChecked()){
+                    SlSpMua.setEnabled(true);
+                    btnThem.setEnabled(true);
                     slTRongKho.setText("Số Lượng sản phẩm còn: "+size42nhan);
                 }
             }
@@ -100,6 +107,8 @@ public class Sp_Xuat_Action extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(rdoSize43.isChecked()){
+                    SlSpMua.setEnabled(true);
+                    btnThem.setEnabled(true);
                     slTRongKho.setText("Số Lượng sản phẩm còn: "+size43nhan);
                 }
             }
@@ -119,11 +128,17 @@ public class Sp_Xuat_Action extends AppCompatActivity {
                 String slcon= slTRongKho.getText().toString().trim();
                 String slcontach[]=slcon.split("\\ ");
                 String slmua= SlSpMua.getText().toString().trim();
+                if(slmua.length()>0){
+                    slMua= Integer.parseInt(slmua);
+                }
                 slCon= Integer.parseInt(slcontach[5]);
-                slMua= Integer.parseInt(slmua);
-               if(slMua > slCon){
+                if(TextUtils.isEmpty(slmua)){
+                    Toast.makeText(Sp_Xuat_Action.this,"Nhập số lượng sản phẩm muốn mua",Toast.LENGTH_SHORT).show();
+                }
+                else if(slMua > slCon){
                    Toast.makeText(Sp_Xuat_Action.this,"Số lượng mua vượt quá số lượng Sp còn",Toast.LENGTH_SHORT).show();
                }
+
                else{
                    int slsauMua=slCon-slMua;
                    int TongSLConSauMua=0;
@@ -133,21 +148,63 @@ public class Sp_Xuat_Action extends AppCompatActivity {
                            break;
                        }
                    }
+                   Cursor dataCTHoaDonXuat = database.GetData("SELECT maHangXuat,Size,SlXuat FROM ChiTietHoaDonXuat WHERE maHDXuat='"+arrayListHoaDonXuat.get(arrayListHoaDonXuat.size()-1).getMaHoaDon()+"' ");
+                   arrayListChiTietHoaDonXuat.clear();
+                   while (dataCTHoaDonXuat.moveToNext()) {
+                       String maHangXuat = dataCTHoaDonXuat.getString(0);
+                       int sizeXuat=dataCTHoaDonXuat.getInt(1);
+                       int SLXuat=dataCTHoaDonXuat.getInt(2);
+                       arrayListChiTietHoaDonXuat.add(new ChiTiethoaDonXuat(SLXuat,sizeXuat,maHangXuat));
+                   }
+
+                   boolean daxuat=false;
+
                    if(rdoSize41.isChecked()==true){
                        int mahdxuat=arrayListHoaDonXuat.get(arrayListHoaDonXuat.size()-1).getMaHoaDon();
-                       database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',41) ");
+
+                       for(int i=0;i<arrayListChiTietHoaDonXuat.size();i++){
+                           if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonXuat.get(i).getMaHangXuat()) && arrayListChiTietHoaDonXuat.get(i).getSizeXuat()==41){
+                               int SLMoi= arrayListChiTietHoaDonXuat.get(i).getSoLuongXuat()+slMua;
+                               daxuat=true;
+                               database.QuerryData("UPDATE ChiTietHoaDonXuat SET SlXuat='"+SLMoi+"' WHERE maHDXuat='"+mahdxuat+"'AND maHangXuat='"+maspnhan+"'AND Size=41");
+                           }
+                       }
+                       if(!daxuat){
+                           database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',41) ");
+                       }
                        database.QuerryData("UPDATE Hang set TongSl= '"+TongSLConSauMua+"', Size41='"+slsauMua+"' WHERE MAHANG='"+maspnhan+"' ");
 
                    }
                    if(rdoSize42.isChecked()==true){
                        int mahdxuat=arrayListHoaDonXuat.get(arrayListHoaDonXuat.size()-1).getMaHoaDon();
-                       database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',42) ");
+
+                       for(int i=0;i<arrayListChiTietHoaDonXuat.size();i++){
+                           if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonXuat.get(i).getMaHangXuat()) && arrayListChiTietHoaDonXuat.get(i).getSizeXuat()==42){
+                               int SLMoi= arrayListChiTietHoaDonXuat.get(i).getSoLuongXuat()+slMua;
+                               daxuat=true;
+                               database.QuerryData("UPDATE ChiTietHoaDonXuat SET SlXuat='"+SLMoi+"' WHERE maHDXuat='"+mahdxuat+"'AND maHangXuat='"+maspnhan+"'AND Size=42");
+                           }
+                       }
+                       if(!daxuat){
+                           database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',42) ");
+
+                       }
                        database.QuerryData("UPDATE Hang set TongSl= '"+TongSLConSauMua+"', Size42='"+slsauMua+"' WHERE MAHANG='"+maspnhan+"' ");
 
                    }
                    if(rdoSize43.isChecked()==true){
                        int mahdxuat=arrayListHoaDonXuat.get(arrayListHoaDonXuat.size()-1).getMaHoaDon();
-                       database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',43) ");
+
+                       for(int i=0;i<arrayListChiTietHoaDonXuat.size();i++){
+                           if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonXuat.get(i).getMaHangXuat()) && arrayListChiTietHoaDonXuat.get(i).getSizeXuat()==43){
+                               int SLMoi= arrayListChiTietHoaDonXuat.get(i).getSoLuongXuat()+slMua;
+                               daxuat=true;
+                               database.QuerryData("UPDATE ChiTietHoaDonXuat SET SlXuat='"+SLMoi+"' WHERE maHDXuat='"+mahdxuat+"'AND maHangXuat='"+maspnhan+"'AND Size=43");
+                           }
+                       }
+                       if(!daxuat){
+                           database.QuerryData("INSERT INTO ChiTietHoaDonXuat VALUES('"+mahdxuat+"','"+maspnhan+"','"+slMua+"','"+giaban+"',43) ");
+                       }
                        database.QuerryData("UPDATE Hang set TongSl= '"+TongSLConSauMua+"', Size43='"+slsauMua+"' WHERE MAHANG='"+maspnhan+"' ");
 
                    }

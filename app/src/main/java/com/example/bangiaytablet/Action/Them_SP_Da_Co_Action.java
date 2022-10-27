@@ -162,15 +162,55 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
                             int maHD = arrayListHoaDonNhap.get(arrayListHoaDonNhap.size() - 1).getMaHoaDon();
 
 
+                            Cursor dataCTHoaDonNhap = database.GetData("SELECT maHangNhap,Size,SlNhap FROM ChiTietHoaDonNhap WHERE maHDNhap='"+maHD+"' ");
+                            arrayListChiTietHoaDonNhap.clear();
+                            while (dataCTHoaDonNhap.moveToNext()) {
+                                String maHangNhap = dataCTHoaDonNhap.getString(0);
+                                int sizeNhap=dataCTHoaDonNhap.getInt(1);
+                                int SLNhap=dataCTHoaDonNhap.getInt(2);
+                                arrayListChiTietHoaDonNhap.add(new ChitietHoaDonNhap(SLNhap,sizeNhap,maHangNhap));
+                            }
+
+                           boolean danhap=false;
+
+
                             database.QuerryData("Update Hang Set TongSl='"+tongsoluongmoi+"',Gia='"+giaban+"',Size41='"+size41moi+"',Size42='"+size42moi+"',Size43='"+size43moi+"' WHERE MAHANG='"+maspnhan+"'");
                             if (size41nhap > 0) {
-                                database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size41nhap + "','" + giaHagThemDouble + "',41)");
+                                for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
+                                    if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==41){
+                                        int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size41nhap;
+                                        danhap=true;
+                                        database.QuerryData("UPDATE ChiTietHoaDonNhap SET SlNhap='"+SLMoi+"' WHERE maHDNhap='"+maHD+"'AND maHangNhap='"+maspnhan+"'AND Size=41");
+                                    }
+                                }
+                                if(!danhap){
+                                    database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size41nhap + "','" + giaHagThemDouble + "',41)");
+
+                                }
                             }
                             if (size42nhap > 0) {
-                                database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size42nhap + "','" + giaHagThemDouble + "',42)");
+                                for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
+                                    if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==42){
+                                        int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size42nhap;
+                                        danhap=true;
+                                        database.QuerryData("UPDATE ChiTietHoaDonNhap SET SlNhap='"+SLMoi+"' WHERE maHDNhap='"+maHD+"'AND maHangNhap='"+maspnhan+"'AND Size=42");
+                                    }
+                                }
+                                if(!danhap){
+                                    database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size42nhap + "','" + giaHagThemDouble + "',42)");
+                                }
                             }
                             if (size43nhap > 0) {
-                                database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size43nhap + "','" + giaHagThemDouble + "',43)");
+                                for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
+                                    if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==43){
+                                        int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size43nhap;
+                                        danhap=true;
+                                        database.QuerryData("UPDATE ChiTietHoaDonNhap SET SlNhap='"+SLMoi+"' WHERE maHDNhap='"+maHD+"'AND maHangNhap='"+maspnhan+"'AND Size=43");
+                                    }
+                                }
+                                if(!danhap){
+                                    database.QuerryData("INSERT INTO ChiTietHoaDonNhap VALUES('" + maHD + "','" + maspnhan + "','" + size43nhap + "','" + giaHagThemDouble + "',43)");
+                                }
                             }
 
                             Toast.makeText(Them_SP_Da_Co_Action.this, "Them Sp moi thành công", Toast.LENGTH_LONG).show();

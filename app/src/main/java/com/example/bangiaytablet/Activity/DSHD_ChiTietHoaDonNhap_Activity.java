@@ -57,7 +57,7 @@ public class DSHD_ChiTietHoaDonNhap_Activity extends AppCompatActivity {
 
     private void hienthiDL() {
         Cursor dataHDNHap = database.GetData("SELECT * FROM HoaDonNhap order by maHD DESC");
-        Cursor dataChitietHoadonNhap = database.GetData("SELECT maHDNhap, SUM(GiaNhap) as TONGTIENNHAP,SUM(SlNhap) as TONGSOSP,maHangNhap FROM ChiTietHoaDonNhap group by maHDNhap,maHangNhap order by maHDNhap DESC");
+        Cursor dataChitietHoadonNhap = database.GetData("SELECT maHDNhap, GiaNhap,SlNhap ,maHangNhap FROM ChiTietHoaDonNhap order by maHDNhap DESC");
         arrayList.clear();
         while (dataHDNHap.moveToNext()) {
             Double TONGTIENNHAP=0.0;
