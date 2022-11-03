@@ -74,6 +74,8 @@
         android:layout_marginBottom="15dp"
         app:srcCompat="@drawable/ic_action_plus" />
 
+
+
     <TextView
         android:id="@+id/tvTongTientrongHoaDonNhap"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.bangiaytablet.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bangiaytablet.Action.Xuat_Hang_Action;
@@ -16,6 +17,9 @@ import com.example.bangiaytablet.R;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -69,6 +73,21 @@ public class XuatHang_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.xong_themhd,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.iconcheckdone){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getdataChiTietHoaDonXuat() {
