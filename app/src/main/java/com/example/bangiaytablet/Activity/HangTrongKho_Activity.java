@@ -25,7 +25,6 @@ import com.example.bangiaytablet.Class.Hang;
 import com.example.bangiaytablet.Database.DatabaseQuanLy;
 import com.example.bangiaytablet.R;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 
 public class HangTrongKho_Activity extends AppCompatActivity {
@@ -72,6 +71,48 @@ public class HangTrongKho_Activity extends AppCompatActivity {
                 intent.putExtra("maHDHang",maHang);
                 startActivity(intent);
                 Toast.makeText(HangTrongKho_Activity.this,maHang,Toast.LENGTH_SHORT).show();
+            }
+        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Dialog dialog= new Dialog(HangTrongKho_Activity.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_chitiethang);
+                dialog.show();
+
+                TextView tenSPCT= dialog.findViewById(R.id.tvTenHangChitietHang);
+                TextView nhaSX= dialog.findViewById(R.id.tvHangSXChiTiet);
+                TextView MauSacCT= dialog.findViewById(R.id.tvMauCHitiet);
+                TextView SLSIze41ct= dialog.findViewById(R.id.tvSlSize41ChiTiet);
+                TextView SLSIze42ct= dialog.findViewById(R.id.tvSlSize42ChiTiet);
+                TextView SLSIze43ct= dialog.findViewById(R.id.tvSlSize43ChiTiet);
+                TextView tongSLCT= dialog.findViewById(R.id.tvTongSLChiTiet);
+                Button thoatCT=dialog.findViewById(R.id.btnDongCHiTiet);
+
+                thoatCT.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                String Ten=arrayList.get(i).getTenHang();
+                String Mau=arrayList.get(i).getMausac();
+                String HangSX=arrayList.get(i).getNhaSanXuat();
+                int SLSize41=arrayList.get(i).getSize41();
+                int SLSize42=arrayList.get(i).getSize42();
+                int SLSize43=arrayList.get(i).getSize43();
+                int TongSL=arrayList.get(i).getSoLuong();
+
+                tenSPCT.setText(Ten);
+                MauSacCT.setText("Màu sắc: "+ Mau);
+                nhaSX.setText("Hãng: "+HangSX);
+                SLSIze41ct.setText("SL Size 41: "+ Integer.toString(SLSize41));
+                SLSIze42ct.setText("SL Size 41: "+ Integer.toString(SLSize42));
+                SLSIze43ct.setText("SL Size 41: "+ Integer.toString(SLSize43));
+                tongSLCT.setText("Tổng SL: "+ Integer.toString(TongSL));
+
+                return true;
             }
         });
 
