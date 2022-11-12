@@ -203,6 +203,7 @@ public class Nhap_Hang_Activity extends AppCompatActivity {
                 Toast.makeText(Nhap_Hang_Activity.this,"Xóa thành công",Toast.LENGTH_LONG).show();
                 getdataHoaDonNhap();
                 getdataChiTietHoaDonNhap();
+                tongtienhientai=0.0;
                 for(int i=0;i<arrayListChitietHoaDonNhapl.size();i++){
                     tongtienhientai+=arrayListChitietHoaDonNhapl.get(i).getGiaNhap()*arrayListChitietHoaDonNhapl.get(i).getSoLuongNhap();
                 }
