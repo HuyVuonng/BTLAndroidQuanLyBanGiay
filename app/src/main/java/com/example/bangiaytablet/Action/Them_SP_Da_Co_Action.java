@@ -125,7 +125,8 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
                 if(
                         TextUtils.isEmpty(slSize43.getText().toString().trim())||
                         TextUtils.isEmpty(slSize41.getText().toString().trim())||
-                        TextUtils.isEmpty(slSize42.getText().toString().trim())){
+                        TextUtils.isEmpty(slSize42.getText().toString().trim())||
+                        TextUtils.isEmpty(GiaSpThem.getText().toString().trim())){
                     Toast.makeText(Them_SP_Da_Co_Action.this,"Hãy nhập đủ thông tin",Toast.LENGTH_LONG).show();
                 }
                 else {
@@ -176,6 +177,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
 
                             database.QuerryData("Update Hang Set TongSl='"+tongsoluongmoi+"',Gia='"+giaban+"',Size41='"+size41moi+"',Size42='"+size42moi+"',Size43='"+size43moi+"' WHERE MAHANG='"+maspnhan+"'");
                             if (size41nhap > 0) {
+                                danhap=false;
                                 for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
                                     if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==41){
                                         int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size41nhap;
@@ -189,6 +191,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
                                 }
                             }
                             if (size42nhap > 0) {
+                                danhap=false;
                                 for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
                                     if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==42){
                                         int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size42nhap;
@@ -201,6 +204,7 @@ public class Them_SP_Da_Co_Action extends AppCompatActivity {
                                 }
                             }
                             if (size43nhap > 0) {
+                                danhap=false;
                                 for(int i=0;i<arrayListChiTietHoaDonNhap.size();i++){
                                     if(maspnhan.equalsIgnoreCase(arrayListChiTietHoaDonNhap.get(i).getMaHangNhap()) && arrayListChiTietHoaDonNhap.get(i).getSizeNhap()==43){
                                         int SLMoi= arrayListChiTietHoaDonNhap.get(i).getSoLuongNhap()+size43nhap;
